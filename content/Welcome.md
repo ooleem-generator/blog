@@ -1,5 +1,8 @@
-This is your new *vault*.
+---
+title: Welcome to Quartz
+---
 
-Make a note of something, [[create a link]], or try [the Importer](https://help.obsidian.md/Plugins/Importer)!
+This is a blank Quartz installation.
+See the [documentation](https://quartz.jzhao.xyz) for how to get started.
 
-When you're ready, delete this note and make the vault your own.
+test1
