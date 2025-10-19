@@ -216,6 +216,27 @@ setJobContext(
 (이하 ChatGPT의 설명)
 > NestJS가 애플리케이션 시작 시 두 클래스를 싱글턴으로 인스턴스화하고 DI 컨테이너에 등록해 두기 때문에, 그 식별자는 프레임워크 내부(주입 토큰, 메모리 참조 등)에서 관리됩니다. 코드 바깥에서 특별히 따로 지정하거나 확인할 필요가 없고, 그래서 소스에서는 보이지 않는 거죠.
 
+그런데.. 알고 보니 모듈에서 프로바이더를 불러올 때, 따로 식별자 역할을 하는 DI 토큰이라는 걸 등록할 수 있었다. 사용자가 토큰을 임의로 지정해서 커스텀 토큰으로 등록하면, 식별자 역할을 할 수 있는 것으로 보인다.
+
+내 프로젝트에도 예시가 있었다. 내가 지정한 토큰은 아니고, NestJS에서 자체적으로 제공하는 토큰(`APP_GUARD`)이다.
+
+```typescript
+//app.modules.ts
+providers: [
+		AppService,
+		DatabaseService,
+		{
+			provide: APP_GUARD,
+			useClass: SessionGuard,
+		}, 
+		GcsService, 
+	],
+
+```
+
+
+
+
 
 # 마무리
 
